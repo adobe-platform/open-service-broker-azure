@@ -1,8 +1,8 @@
 apiVersion: v2
 description: A Helm chart for Open Service Broker For Azure
 name: open-service-broker-azure
-version: 1.8.4-0.2.6-adobe
-appVersion: 1.8.4-0.2.6-adobe
+version: 1.8.4-0.2.7-adobe
+appVersion: 1.8.4-0.2.7-adobe
 keywords:
   - azure
   - services

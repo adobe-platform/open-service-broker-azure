@@ -29,6 +29,9 @@ func (a *allInOneManager) updateARMTemplate(
 ) (service.InstanceDetails, error) {
 	dt := instance.Details.(*allInOneInstanceDetails)
 	version := instance.Service.GetProperties().Extended["version"].(string)
+	armTemplateParameters := map[string]interface{}{
+		"administratorLoginPassword": string(dt.AdministratorLoginPassword),
+	}
 	goTemplateParameters, err := buildGoTemplateParameters(
 		instance.Plan,
 		version,
@@ -50,7 +53,7 @@ func (a *allInOneManager) updateARMTemplate(
 		instance.UpdatingParameters.GetString("location"),
 		dbmsARMTemplateBytes,
 		goTemplateParameters,
-		map[string]interface{}{},
+		armTemplateParameters,
 		tags,
 	)
 	if err != nil {

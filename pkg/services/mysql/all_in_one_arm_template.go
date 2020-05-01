@@ -46,7 +46,7 @@ var allInOneARMTemplateBytes = []byte(`
 			"tags": "[parameters('tags')]",
 			"resources": [
 				{{ $root := . }}
-				{{$firewallRulesCount := sub (len .firewallRules)  1}}
+				{{$firewallRulesCount := sub (len .firewallRules) 1 }}
 				{{$virtualNetworkRulesCount := sub (len .virtualNetworkRules) 1 }}
 				{{range $i, $rule := .firewallRules}}
 				{
@@ -61,7 +61,7 @@ var allInOneARMTemplateBytes = []byte(`
 						"startIpAddress": "{{$rule.startIPAddress}}",
 						"endIpAddress": "{{$rule.endIPAddress}}"
 					}
-				}{{ if or (lt $i $firewallRulesCount) (gt $virtualNetworkRulesCount -1) }},{{end}}
+				},
 				{{end}}	
 				{{range $i, $rule := .virtualNetworkRules}}
 				{
